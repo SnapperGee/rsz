@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+main()
+{
+    case "${1,,}" in
+        sm|small)
+            printf 'Resizing to small(80x20)...\n'
+            printf '\e[8;20;80t'
+            ;;
+        md|medium)
+            printf 'Resizing to medium(90x20)...\n'
+            printf '\e[8;20;90t'
+            ;;
+        lg|large)
+            printf 'Resizing to large(100x20)...\n'
+            printf '\e[8;20;100t'
+            ;;
+        w|width)
+            if ! [[ "$2" =~ ^[0-9]+$ ]]; then
+                printf 'Non number passed as width: "%s"\n' "$2"
+                exit 33
+            fi
+            printf 'Resizing width to %d...\n' "$2"
+            printf '\e[8;%d;%dt' "$(tput lines)" "$2"
+            ;;
+        h|height|_)
+            if ! [[ "$2" =~ ^[0-9]+$ ]]; then
+                printf 'Non number passed as height: "%s"\n' "$2"
+                exit 44
+            fi
+            printf 'Resizing height to %d...\n' "$2"
+            printf '\e[8;%d;%dt' "$2" "$(tput cols)"
+            ;;
+        *)
+            case "$#" in
+                0)
+                    printf 'Missing 1 or more required argument(s)\n'
+                    exit 22
+                    ;;
+                1)
+                    if [[ "$1" =~ ^[0-9]+$ ]]; then
+                        printf 'Resizing width to %d...\n' "$1"
+                        printf '\e[8;%d;%dt' "$(tput lines)" "$1"
+                    else
+                        printf 'Non number passed as width: "%s"\n' "$1"
+                        exit 33
+                    fi
+                    ;;
+                2)
+                    if ! [[ "$1" =~ ^[0-9]+$ ]]; then
+                        printf 'Non number passed as width: "%s"\n' "$1"
+                        exit 33
+                    fi
+
+                    if ! [[ "$2" =~ ^[0-9]+$ ]]; then
+                        printf 'Non number passed as height: "%s"\n' "$2"
+                        exit 44
+                    fi
+
+                    printf 'Resizing to %dx%d...\n' "$2" "$1"
+                    printf '\e[8;%d;%dt' "$2" "$1"
+                    ;;
+                *)
+                    printf 'Illegal argument(s): "%s"\n' "$*"
+                    exit 11
+                    ;;
+            esac
+    esac
+
+    exit 0
+}
+
+main "$@"
