@@ -1,0 +1,35 @@
+.Dd June 11, 2024
+.Dt rsz 1
+.Os Debian
+.Sh NAME
+.Nm rsz
+.Nd resizes terminal window.
+.Sh SYNOPSIS
+.Nm
+.Op Ar width Op height
+.Op Ar w|width new-width
+.Op Ar w+|width+ increase-width
+.Op Ar w-|width- decrease-width
+.Op Ar h|height new-height
+.Op Ar h+|height+ increase-height
+.Op Ar h-|height- decrease-height
+.Sh DESCRIPTION
+Resize the terminal window. The width and height can be set to an explicit value
+or relatively by increasing or decreasing the current width or height by a
+certain amount. Passing a single number as an argument sets the width and
+passing 2 number arguments sets the width and height respectively.
+.Pp
+.Bl -tag -width -indent
+.It h|height
+Set the height (rows) of the terminal window.
+.It h+|height+
+Increase the height (rows) of the terminal window by a specified amount.
+.It h-|height-
+Decrease the height (rows) of the terminal window by a specified amount.
+.It w|width
+Set the width (columns) of the terminal window.
+.It w+|width+
+Increase the width (columns) of the terminal window by a specified amount.
+.It w-|width-
+Decrease the width (columns) of the terminal window by a specified amount.
+.El
