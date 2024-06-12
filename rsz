@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-source './argparse/single.bash'
-source './argparse/double.bash'
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$DIR/argparse/single.bash"
+source "$DIR/argparse/double.bash"
 
 rsz()
 {
