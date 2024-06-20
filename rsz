@@ -17,16 +17,21 @@ rsz()
     source "$DIR/argparse/double.bash"
 
     case "$#" in
+        0)
+            printf '1 to 2 arguments expected but got %d\n' "$#" >&2
+            exit 1
+        ;;
         1)
             argparse_single "$1"
-            ;;
+        ;;
         2)
             argparse_double "$@"
-            ;;
+        ;;
         *)
-            printf '1 to 2 arguments expected but got %d: "%s"\n' "$#" "$*"
+            source "$DIR/util/join_by.bash"
+            printf '1 to 2 arguments expected but got %d: ["%s"]\n' "$#" "$(join_by '", "' "$@")" >&2
             exit 1
-            ;;
+        ;;
     esac
     exit 0
 }
