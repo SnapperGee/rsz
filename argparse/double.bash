@@ -1,16 +1,28 @@
 argparse_double()
 {
+    if [[ $# -eq 0 ]]; then
+        printf 'argparse_double(): 2 arguments required but got 0' >&2
+        exit 21
+    fi
+
+    if [[ $# -eq 1 ]]; then
+        printf 'argparse_double(): 2 arguments required but got 1: "%s"' $# "$1" >&2
+        exit 21
+    fi
+
     local DIR
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-    source "$DIR/../lib/set_columns.bash"
-    source "$DIR/../lib/set_rows.bash"
-    source "$DIR/../lib/set_size.bash"
+    if [[ $# -gt 2 ]]; then
 
-    if [[ $# -ne 2 ]]; then
-        printf 'Non double argument passed to argparse double: "%s"\n' "$*" >&2
+        source "$DIR/../util/join_by.bash"
+
+        printf 'argparse_double(): 2 arguments required but got %d: ["%s"]' $# "$(join_by '", "' "$@")" >&2
         exit 21
     fi
+
+    source "$DIR/../lib/set_columns.bash"
+    source "$DIR/../lib/set_rows.bash"
 
     case "${1,,}" in
         w|width)
@@ -45,7 +57,7 @@ argparse_double()
                 exit 25
             fi
             printf 'Resizing height to %d...\n' "$2"
-            set_rows $2
+            set_rows "$2"
         ;;
         'h+'|'height+')
             if ! [[ $2 =~ ^[0-9]+$ ]]; then
@@ -66,6 +78,8 @@ argparse_double()
             set_rows "$new_height"
         ;;
         *)
+            source "$DIR/../lib/set_size.bash"
+
             if ! [[ "$1" =~ ^[0-9]+$ ]]; then
                 printf 'Non number passed as width: "%s"\n' "$1" >&2
                 exit 28
