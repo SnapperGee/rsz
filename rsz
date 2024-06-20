@@ -5,6 +5,14 @@ rsz()
     local DIR
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+    for arg in "$@"; do
+        if [[ "$arg" == '--help' ]]; then
+            source "$DIR/lib/print_help.bash"
+            print_help
+            exit 0
+        fi
+    done
+
     source "$DIR/argparse/single.bash"
     source "$DIR/argparse/double.bash"
 
