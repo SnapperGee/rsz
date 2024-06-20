@@ -1,11 +1,12 @@
-ARGPARSE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-source "$ARGPARSE_DIR/../lib/set_columns.bash"
-source "$ARGPARSE_DIR/../lib/set_rows.bash"
-source "$ARGPARSE_DIR/../lib/set_size.bash"
-
 argparse_double()
 {
+    local DIR
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+    source "$DIR/../lib/set_columns.bash"
+    source "$DIR/../lib/set_rows.bash"
+    source "$DIR/../lib/set_size.bash"
+
     if [[ "$#" -ne 2 ]]; then
         printf 'Non double argument passed to argparse double: "%s"\n' "$*"
         exit 21

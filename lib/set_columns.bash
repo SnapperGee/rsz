@@ -1,9 +1,10 @@
-LIB_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-source "$LIB_DIR/../util/join_by.bash"
-
 set_columns()
 {
+    local DIR
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+    source "$DIR/../util/join_by.bash"
+
     if [[ "$#" -eq 0 ]]; then
         printf 'set_columns(): requires 1 argument (a width), but got 0: []\n'
         exit 7

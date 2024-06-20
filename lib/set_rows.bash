@@ -1,9 +1,10 @@
-LIB_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-source "$LIB_DIR/../util/join_by.bash"
-
 set_rows()
 {
+    local DIR
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+    source "$DIR/../util/join_by.bash"
+
     if [[ "$#" -eq 0 ]]; then
         printf 'set_rows(): requires 1 argument (a height), but got 0: []\n'
         exit 11

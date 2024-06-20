@@ -1,10 +1,11 @@
-ARGPARSE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-source "$ARGPARSE_DIR/../lib/set_columns.bash"
-source "$ARGPARSE_DIR/../lib/set_size.bash"
-
 argparse_single()
 {
+    local DIR
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+    source "$DIR/../lib/set_columns.bash"
+    source "$DIR/../lib/set_size.bash"
+
     if [[ "$#" -ne 1 ]]; then
         printf 'Non single argument passed to argparse single: "%s"\n' "$@"
         exit 111

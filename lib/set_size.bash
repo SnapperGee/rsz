@@ -1,9 +1,10 @@
-LIB_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-source "$LIB_DIR/../util/join_by.bash"
-
 set_size()
 {
+    local DIR
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+    source "$DIR/../util/join_by.bash"
+
     if [[ "$#" -ne 2 ]]; then
         local errMsg='set_size() requires 2 arguments (a width and height), but got'
 
