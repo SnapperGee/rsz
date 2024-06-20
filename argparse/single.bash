@@ -1,6 +1,6 @@
 argparse_single()
 {
-    if [[ "$#" -lt 1 ]]; then
+    if [[ $# -lt 1 ]]; then
         printf 'argparse_single(): 1 argument required but instead got %d\n' $# >&2
         exit 111
     fi
@@ -8,7 +8,7 @@ argparse_single()
     local DIR
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-    if [[ "$#" -gt 1 ]]; then
+    if [[ $# -gt 1 ]]; then
         source "$DIR/../util/join_by.bash"
         printf 'argparse_single(): 1 argument required but instead got %d: ["%s"]\n' $# "$(join_by '", "' "$@")" >&2
         exit 111
@@ -30,7 +30,7 @@ argparse_single()
             set_size 20 100
         ;;
         *)
-            if [[ "$1" =~ ^[0-9]+$ ]]; then
+            if [[ $1 =~ ^[0-9]+$ ]]; then
                 source "$DIR/../lib/set_columns.bash"
                 printf 'Resizing width to %d...\n' "$1"
                 set_columns "$1"
