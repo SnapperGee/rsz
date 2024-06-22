@@ -9,10 +9,9 @@ rsz()
 
     for arg in "$@"; do
         if [[ "$arg" == '--version' || "$arg" == '-v' ]]; then
-            printf '%s %s\n' "$(basename $0)" "$VERSION"
+            printf '%s %s\n' "$(basename "$0")" "$VERSION"
             exit 0
-        fi
-        if [[ "$arg" == '--help' || "$arg" == '-h' ]]; then
+        elif [[ "$arg" == '--help' || "$arg" == '-h' ]]; then
             source "$DIR/lib/print_help.bash"
             print_help
             exit 0
