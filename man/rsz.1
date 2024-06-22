@@ -5,34 +5,34 @@
 .Nm rsz
 .Nd resizes terminal window.
 .Sh SYNOPSIS
-.Cm Nm
+.Nm
 .Ar new-width Op new-height
 .br
-.Cm Nm
+.Nm
 .Ar sm|md|lg
 .br
-.Cm Nm
+.Nm
 .Ar w|width columns Op h|height rows
 .br
-.Cm Nm
+.Nm
 .Ar h|height rows Op w|width columns
 .br
-.Cm Nm
+.Nm
 .Ar w+|width+ add_columns
 .br
-.Cm Nm
+.Nm
 .Ar w-|width- remove_columns
 .br
-.Cm Nm
+.Nm
 .Ar h+|height+ add_rows
 .br
-.Cm Nm
+.Nm
 .Ar h-|height- remove_rows
 .br
-.Cm Nm
+.Nm
 .Ar --help|--version
 .br
-.Cm Nm
+.Nm
 .Ar -h|-v
 .Sh DESCRIPTION
 Resize the terminal window. The width and height can be set to an explicit value
@@ -40,22 +40,28 @@ or relatively by increasing or decreasing the current width(terminal columns) or
 height(terminal rows) by a certain amount. Passing a single number as an
 argument sets the width and passing 2 number arguments sets the width and height
 respectively.
-.Pp
+.Sh OPERANDS, FLAGS, AND OPTIONS
 .Bl -tag -width -indent
 .It h|height
-Set the height (rows) of the terminal window.
+Set the height (rows) of the terminal window. Expects positive integer.
 .It h+|height+
-Increase the height (rows) of the terminal window by a specified amount.
+Increase the height (rows) of the terminal window by a specified amount. Expects
+positive integer.
 .It h-|height-
 Decrease the height (rows) of the terminal window by a specified amount.
+Expects positive integer.
 .It w|width
-Set the width (columns) of the terminal window.
+Set the width (columns) of the terminal window. Expects positive integer.
 .It w+|width+
 Increase the width (columns) of the terminal window by a specified amount.
+Expects positive integer.
 .It w-|width-
 Decrease the width (columns) of the terminal window by a specified amount.
+Expects positive integer.
 .It -h|--help
-Print help message to stdout.
+Print help message to stdout. This command will override all other commands if
+passed unless version flag or option is encountered first while parsing arguments.
 .It -v|--version
-Print script version to stdout.
+Print script version to stdout. This command will override all other commands if
+passed unless help flag or option is encountered while parsing arguments first.
 .El
