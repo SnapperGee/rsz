@@ -65,3 +65,27 @@ passed unless version flag or option is encountered first while parsing argument
 Print script version to stdout. This command will override all other commands if
 passed unless help flag or option is encountered while parsing arguments first.
 .El
+.Sh USAGE
+.Bd -literal -offset indent
+$rsz sm # sets terminal window to default small size of 80 columns by 20 rows
+$rsz md # sets terminal window to default medium size of 90 columns by 20 rows
+$rsz lg # sets terminal window to default large size of 100 columns by 20 rows
+
+$rsz 100 20 # sets terminal window width to 100 columns and height to 20 rows
+$rsz 100 # sets terminal window width to 100 columns
+
+$rsz h 20 # sets terminal window height to 20 rows
+$rsz h+ 20 # increases terminal window height by 20 rows
+$rsz h- 20 # decrease terminal window height by 20 rows
+# Above is the shorthand height syntax, but 'h' can be substituted with "height"
+# and the behavior will be identical
+
+$rsz w 100 # sets terminal window width to 100 columns
+$rsz w+ 100 # increases terminal window width by 100 columns
+$rsz w- 100 # decrease terminal window width by 100 columns
+# Above is the shorthand height syntax, but 'h' can be substituted with "height"
+# and the behavior will be identical
+
+$rsz --help # print help text to stdout
+$rsz --version # print script version to stdout
+.Ed
