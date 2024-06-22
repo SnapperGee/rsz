@@ -5,19 +5,41 @@
 .Nm rsz
 .Nd resizes terminal window.
 .Sh SYNOPSIS
-.Nm
-.Op Ar new-width Op new-height
-.Op Ar w|width new-width
-.Op Ar w+|width+ increase-width
-.Op Ar w-|width- decrease-width
-.Op Ar h|height new-height
-.Op Ar h+|height+ increase-height
-.Op Ar h-|height- decrease-height
+.Cm Nm
+.Ar new-width Op new-height
+.br
+.Cm Nm
+.Ar sm|md|lg
+.br
+.Cm Nm
+.Ar w|width columns Op h|height rows
+.br
+.Cm Nm
+.Ar h|height rows Op w|width columns
+.br
+.Cm Nm
+.Ar w+|width+ add_columns
+.br
+.Cm Nm
+.Ar w-|width- remove_columns
+.br
+.Cm Nm
+.Ar h+|height+ add_rows
+.br
+.Cm Nm
+.Ar h-|height- remove_rows
+.br
+.Cm Nm
+.Ar --help|--version
+.br
+.Cm Nm
+.Ar -h|-v
 .Sh DESCRIPTION
 Resize the terminal window. The width and height can be set to an explicit value
-or relatively by increasing or decreasing the current width or height by a
-certain amount. Passing a single number as an argument sets the width and
-passing 2 number arguments sets the width and height respectively.
+or relatively by increasing or decreasing the current width(terminal columns) or
+height(terminal rows) by a certain amount. Passing a single number as an
+argument sets the width and passing 2 number arguments sets the width and height
+respectively.
 .Pp
 .Bl -tag -width -indent
 .It h|height
@@ -32,4 +54,8 @@ Set the width (columns) of the terminal window.
 Increase the width (columns) of the terminal window by a specified amount.
 .It w-|width-
 Decrease the width (columns) of the terminal window by a specified amount.
+.It -h|--help
+Print help message to stdout.
+.It -v|--version
+Print script version to stdout.
 .El
