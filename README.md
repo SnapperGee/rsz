@@ -1,6 +1,6 @@
 # RSZ
 
-Bash script to resize terminal window via the command line.
+Bash script to resize the terminal window from the command line.
 
 ## Usage
 
